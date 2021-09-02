@@ -5,8 +5,12 @@ export default class Calculation {
         public readonly result: number
     ) {};
 
+    private static calculate(operation: string) {
+        return new Function('return ' + operation)();
+    }
+
     public static fromOperationString(operation: string) {
-        const result = 0;
+        const result = this.calculate(operation);
         return new Calculation(operation, result);
     }
 }
