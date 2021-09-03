@@ -20,8 +20,8 @@ export class App {
     app.use(express.urlencoded({ extended: true }))
 
     const routes = calcBotRoutes.map(route => new ExpressRoute(app, route));
-    //const mongoClient = ioc.get<MongoDataSource>(MongoDataSource.Token);
-    // await mongoClient.connect();
+    const mongoClient = ioc.get<MongoDataSource>(MongoDataSource.Token);
+    await mongoClient.connect();
 
     server.listen(3000, () => {
       console.log('listening on *:3000');

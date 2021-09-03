@@ -8,8 +8,8 @@ export default class Failure {
 
     static fromError(
         error: Error,
-        throwable: boolean,
-        reportable: boolean
+        throwable: boolean = false,
+        reportable: boolean = false,
     ): Failure {
         return new Failure(error, throwable, reportable);
     }

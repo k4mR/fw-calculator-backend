@@ -1,7 +1,11 @@
 # fw-backend
 
 ```
+// to run just service
 npm run all
+
+// to run service with mongodb
+docker compose up
 
 // calculate
 curl -d '{"operation":"2+2*2"}' -H "Content-Type: application/json" -X POST http://localhost:3000/api/v1/calc-bot/calculate

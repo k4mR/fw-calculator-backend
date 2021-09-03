@@ -7,7 +7,8 @@ import { GetCalculationsHistoryUseCase } from "./features/calc-bot/domain/use-ca
 
 
 const ioc = new Container();
-ioc.bind<MongoDataSource>(MongoDataSource.Token).to(MongoDataSource);
+ioc.bind<MongoDataSource>(MongoDataSource.Token).to(MongoDataSource).inSingletonScope();
+
 ioc.bind<CalcBotController>(CalcBotController.Token).to(CalcBotController);
 ioc.bind<CalculateUseCase>(CalculateUseCase.Token).to(CalculateUseCase);
 ioc.bind<GetCalculationsHistoryUseCase>(GetCalculationsHistoryUseCase.Token)
