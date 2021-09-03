@@ -21,6 +21,7 @@ export default class MathUtils {
                 if (operation) {
                     parts.splice(i - 1, 3, operation(a, b).toString());
                 }
+                i -= 2;
             }
         }
     }
