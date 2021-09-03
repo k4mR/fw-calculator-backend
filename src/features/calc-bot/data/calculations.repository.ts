@@ -1,15 +1,17 @@
 import { injectable } from "inversify";
+import Failure from "../../../core/failure";
+import Result from "../../../core/result";
 import Calculation from "../domain/entities/calculation.entity";
 
 @injectable()
 export default class CalculationsRepository {
     public static Token: string = 'CALCULATIONS_REPOSITORY';
 
-    public add(calculation: Calculation) {
-
+    public async add(calculation: Calculation): Promise<Result<number | Failure>> {
+        return Result.withContent(0);
     }
 
-    public list(max: number) {
-        
+    public async list(max: number): Promise<Result<number[] | Failure>> {
+        return Result.withContent([0]);
     }
 }
