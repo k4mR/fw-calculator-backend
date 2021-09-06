@@ -31,7 +31,7 @@ export default class CalculationsRepository {
         try {
             const operations = this.mongoDatasource.getDatabase()?.collection('operations');
             const result = await operations?.find({})
-                .sort({x:-1})
+                .sort({ '_id': -1 })
                 .limit(max)
                 .map(document => document.result)
                 .toArray();

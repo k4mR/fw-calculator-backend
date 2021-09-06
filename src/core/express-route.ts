@@ -1,4 +1,5 @@
 import express from 'express';
+
 import { Route } from './route';
 
 export default class ExpressRoute {

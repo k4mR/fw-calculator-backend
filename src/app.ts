@@ -3,6 +3,7 @@ process.env.NODE_CONFIG_DIR = require('path').resolve(__dirname, 'config');
 import "reflect-metadata";
 import dotenv from 'dotenv';
 import express from 'express';
+import cors from 'cors';
 import http from 'http';
 import { ioc } from "./ioc.config";
 import MongoDataSource from "./features/calc-bot/data/data-sources/mongo.data-source";
@@ -19,6 +20,7 @@ export class App {
 
     app.use(express.json())
     app.use(express.urlencoded({ extended: true }))
+    app.use(cors());
 
     const routes = calcBotRoutes.map(route => new ExpressRoute(app, route));
     const mongoClient = ioc.get<MongoDataSource>(MongoDataSource.Token);

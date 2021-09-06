@@ -18,11 +18,11 @@ export class CalcBotController {
         this.getCalculationsHistoryUseCase = getCalculationsHistoryUseCase;
     }
 
-    public calculate(operation: string) {
-        return this.calculateUseCase.execute(operation);
+    public async calculate(operation: string) {
+        return await this.calculateUseCase.execute(operation);
     }
 
-    public getCalculationsHistory(max: number) {
-        return this.getCalculationsHistoryUseCase.execute(max);
+    public async getCalculationsHistory(max: number) {
+        return await this.getCalculationsHistoryUseCase.execute(max);
     }
 }
