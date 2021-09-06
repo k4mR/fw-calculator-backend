@@ -8,6 +8,7 @@ import { ioc } from "./ioc.config";
 import MongoDataSource from "./features/calc-bot/data/data-sources/mongo.data-source";
 import { calcBotRoutes } from "./features/calc-bot/calc-bot.routes";
 import ExpressRoute from "./core/express-route";
+import config from "config";
 
 dotenv.config();
 
@@ -23,8 +24,8 @@ export class App {
     const mongoClient = ioc.get<MongoDataSource>(MongoDataSource.Token);
     await mongoClient.connect();
 
-    server.listen(3000, () => {
-      console.log('listening on *:3000');
+    server.listen(Number(config.get('port')), () => {
+      console.log(`listening on *:${config.get('port')}`);
     });
   }
 }

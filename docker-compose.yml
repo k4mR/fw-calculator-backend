@@ -1,6 +1,22 @@
 version: "3.1"
 
 services:
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/app/
+      - /usr/app/node_modules
+      - ./.env:/app/.env
+    ports:
+      - "3001:3001"
+    depends_on:
+      - db
+    environment:
+      DB_URL: mongodb://db:27017/?compressors=disabled&gssapiServiceName=mongodb
+      DB_NAME: calculator
+      PORT: 3001
   db:
     container_name: mongodb
     image: mongo:latest
